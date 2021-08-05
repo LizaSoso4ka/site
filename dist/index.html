@@ -51,13 +51,12 @@
 
         .btn {
             display: inline-block;
-            background-color: rgb(151, 151, 151);
             border-radius: 15px;
             font-size: 35px;
-            color: rgb(51, 51, 51);
-            margin-top: 100px;
+            color: rgb(255, 255, 255);
+            margin-top: 50px;
             width: 170px;
-            border: 1px solid rgb(75, 75, 75);
+            border: 2px solid rgb(0, 0, 0);
         }
 
         a {
@@ -67,6 +66,7 @@
 
         a:hover {
             opacity: 1;
+            background-color: rgb(58, 58, 58);
         }
 
         a:link {
@@ -116,9 +116,45 @@
             background: #ddd;
             color: black;
         }
+
+        .ti-control-pause {
+            color: white;
+            font-size: 25px;
+        }
+
+        .ti-control-play {
+            color: white;
+            font-size: 25px;
+        }
+
+        .ti-control-pause:hover {
+            cursor: pointer;
+        }
+
+        .ti-control-play:hover {
+            cursor: pointer;
+        }
+        
+        .lowerleft
+        {
+            margin-bottom: 30px;
+            margin-left : 30px;
+            position: fixed;
+            bottom: 0;
+            z-index: 9999;
+        }
     </style>
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
 </head>
 <body  style="opacity: 0;">
+    
+    <span class="ti-control-pause lowerleft" id="pause-button"></span>
 
     <div>
         <video autoPlay muted loop id="myVideo">
@@ -126,15 +162,18 @@
         </video>
     </div>
 
-    <div class="content">
-        <p style="font-size: 100px; background: -webkit-linear-gradient(rgb(180, 180, 180), rgb(63, 63, 63)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">deadsleep</p>
-        <p style="color: rgb(133, 133, 133);">никто не вечен нож мне в печень</p>
+    <div class="content" id="cont">
+        <p style="font-size: 140px; color: white;">deadsleep</p>
+        <p style="color: rgb(133, 133, 133); font-size: 30px; margin-bottom: 10px;">† i hate everything about u. †</p>
+        <p style="color: rgb(133, 133, 133); font-size: 30px;">Logout ↻</p>
         <a href="https://steamcommunity.com/id/sladk1y_4ak4ak/" class="btn">STEAM</a>
         <a href="https://vk.com/sladk1y_4ak4ak" class="btn">VK</a>
         <a href="https://discord.gg/nQ6Fdrr92h" class="btn">DISCORD</a>
-
-
+        <a href="https://www.youtube.com/channel/UC2JQOkxdEl9x_QquysWEHWg" class="btn">YOUTUBE</a>
     </div>
+
+    
+
     <script>
         
         window.onload = function() {
@@ -148,18 +187,24 @@
 
         var video = document.getElementById("myVideo");
         var btn = document.getElementById("myBtn");
+        var pauseBtn = document.getElementById("pause-button");
+        var pause = false;
 
-        function myFunction() {
-            if (video.paused) {
-                video.play();
-                btn.innerHTML = "Pause";
-            } else {
+        pauseBtn.addEventListener('click', function() {
+            pause = !pause;
+
+            if(pause) {
+                pauseBtn.className = "ti-control-play lowerleft";
                 video.pause();
-                btn.innerHTML = "Play";
+            } else {
+                pauseBtn.className = "ti-control-pause lowerleft";
+                video.play();
             }
-        }
+        });
 
-        document.addEventListener('click', function() { video.muted = false; video.volume = 0.1; }, { once: true });
+       
+
+        document.body.addEventListener('click', function() { video.muted = false; video.volume = 0.1; }, { once: true });
     </script>
 </body>
 </html>
