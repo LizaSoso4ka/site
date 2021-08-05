@@ -34,8 +34,8 @@
             -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             text-align: center;
-			
-			font-family: 'Poppins', sans-serif;
+            
+            font-family: 'Poppins', sans-serif;
         }
 
         p {
@@ -44,6 +44,7 @@
 
         body {
             background-color: #3b3b3b;
+            margin: 0;
         }
 
         .btn {
@@ -53,7 +54,7 @@
             font-size: 35px;
             color: rgb(51, 51, 51);
             margin-top: 100px;
-            width: 155px;
+            width: 170px;
             border: 1px solid rgb(75, 75, 75);
         }
 
@@ -86,9 +87,42 @@
         .loaded {
             animation: 1s ease-out 0s 1 loadanim;
         }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        video {
+            filter: brightness(30%);
+        }
+
+        #myBtn {
+            width: 200px;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #myBtn:hover {
+            background: #ddd;
+            color: black;
+        }
     </style>
 </head>
 <body  style="opacity: 0;">
+
+    <div>
+        <video autoplay muted loop id="myVideo">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
 
     <div class="content">
         <p style="font-size: 100px; background: -webkit-linear-gradient(rgb(180, 180, 180), rgb(63, 63, 63)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">deadsleep</p>
@@ -107,6 +141,21 @@
                 document.body.className += " loaded";
                 document.body.style = "";    
             }, 300);
+        }
+
+
+
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("myBtn");
+
+        function myFunction() {
+            if (video.paused) {
+                video.play();
+                btn.innerHTML = "Pause";
+            } else {
+                video.pause();
+                btn.innerHTML = "Play";
+            }
         }
     </script>
 </body>
