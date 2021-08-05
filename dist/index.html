@@ -119,7 +119,7 @@
 <body  style="opacity: 0;">
 
     <div>
-        <video autoplay muted loop id="myVideo">
+        <video autoPlay muted loop id="myVideo">
             <source src="video.mp4" type="video/mp4">
         </video>
     </div>
@@ -137,7 +137,6 @@
         
         window.onload = function() {
             setTimeout(() => {
-                document.bo
                 document.body.className += " loaded";
                 document.body.style = "";    
             }, 300);
@@ -157,6 +156,8 @@
                 btn.innerHTML = "Play";
             }
         }
+
+        document.addEventListener('click', function() { video.muted = false; }, { once: true });
     </script>
 </body>
 </html>
